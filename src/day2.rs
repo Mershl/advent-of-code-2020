@@ -1,5 +1,4 @@
 
-#[derive(Debug)]
 pub struct PasswordEntry {
     condition_a: usize,
     condition_b: usize,
