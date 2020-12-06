@@ -41,6 +41,23 @@ pub fn part1(input: &[BoardingPass]) -> usize {
     input.iter().max_by(|a, b| a.seat_id.cmp(&b.seat_id)).unwrap().seat_id
 }
 
+#[aoc(day5, part2)]
+pub fn part2(input: &[BoardingPass]) -> usize {
+    let min_row = input.iter().min_by(|a, b| a.row.cmp(&b.row)).unwrap().row;
+    let max_row = input.iter().max_by(|a, b| a.row.cmp(&b.row)).unwrap().row;
+    let min_col = input.iter().min_by(|a, b| a.column.cmp(&b.column)).unwrap().column;
+    let max_col = input.iter().max_by(|a, b| a.column.cmp(&b.column)).unwrap().column;
+
+    println!("{}-{} & {}-{}", min_row, max_row, min_col, max_col);
+
+    input.iter().for_each(|cand| {
+       if !input.iter().any(|bp| cand.row == bp.row && cand.column == bp.column - 1 && cand.column == bp.column + 1) {
+           return cand.seat_id;
+       }
+    });
+    unreachable!()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
