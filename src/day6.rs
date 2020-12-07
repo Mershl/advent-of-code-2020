@@ -4,7 +4,8 @@ use std::collections::HashSet;
 pub fn part1(input: &str) -> usize {
     let parsed_input: Vec<HashSet<char>> = input.split("\n\n")
                                                 .map(|s| s.chars()
-                                                          .filter(|c| c.is_alphabetic()).collect()
+                                                          .filter(|c| c.is_alphabetic())
+                                                          .collect()
                                                 ).collect();
     parsed_input.iter().fold(0, |f, set| f + set.len())
 }
