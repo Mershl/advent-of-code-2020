@@ -31,10 +31,10 @@ impl Machine {
         }
     }
 
-    fn exec_instruction(&mut self, instruction: &Instruction) -> bool {
+    fn exec_instruction(&mut self, instruction: &Instruction) {
         if self.executed_ics.contains(&self.ic) {
             self.endless_detected = true;
-            return false;
+            return;
         }
 
         // jmp instructions shall not increment ic
@@ -60,12 +60,9 @@ impl Machine {
             _ => panic!("Unsupported op_code: {}", instruction.op_code)
         }
 
-        // inc ic
         if inc_ic {
             self.ic += 1;
         }
-
-        true
     }
 
     pub fn get_ic(&self) -> usize {
