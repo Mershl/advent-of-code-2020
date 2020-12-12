@@ -38,13 +38,3 @@ pub fn part2(input: &str) -> i64 {
     }
     panic!("No machine terminated without endless loop.")
 }
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn example1() {
-        assert_eq!(1, 1);
-    }
-}
